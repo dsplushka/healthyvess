@@ -12,5 +12,21 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/Theme.HealthyVess.TextView</item>
+
     </style>
+
+    <style name="Theme.HealthyVess.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+    <style name="Theme.HealthyVess.Phone" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="Theme.HealthyVess.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HealthyVess</string>
+    <string name="first_text">Hello!</string>
+    <string name="last_text">Bye!</string>
+    <string name="center_button">Button</string>
+    <string name="phone">+79151111111</string>
 </resources>
