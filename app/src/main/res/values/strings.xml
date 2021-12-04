@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">HealthyVess</string>
-    <string name="first_text">Hello!</string>
-    <string name="last_text">Bye!</string>
-    <string name="center_button">Button</string>
-    <string name="phone">+79151111111</string>
+    <string name="profile">Профиль</string>
+    <string name="home">Главная</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homefr">Тут будет выбор блюд</string>
+    <string name="user">Тут будет профиль пользователя</string>
 </resources>
