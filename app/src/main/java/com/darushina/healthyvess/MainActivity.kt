@@ -1,45 +1,55 @@
 package com.darushina.healthyvess
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.PersistableBundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-const val TAG = "MainActivity"
+private const val LAST_SCREEN = "screen"
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var bottomNavigationMenu:BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(TAG, "Ты видел деву на скале\n" +
-                "В одежде белой над волнами")
+        bottomNavigationMenu = findViewById(R.id.bottom_navigation_menu)
+
+        bottomNavigationMenu.setOnItemSelectedListener { item ->
+            var fragment: Fragment? = null
+            when (item.itemId) {
+                R.id.home -> {
+                    fragment=MainFragment()
+                }
+                R.id.user -> {
+                    fragment=UserFragment()
+                }
+            }
+            replaceFragment(fragment!!)
+
+            true
+        }
+        bottomNavigationMenu.selectedItemId = savedInstanceState?.getInt(LAST_SCREEN) ?: R.id.home
     }
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "Когда, бушуя в бурной мгле,\n" +
-                "Играло море с берегами,")
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(LAST_SCREEN, bottomNavigationMenu.selectedItemId)
     }
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "Когда луч молний озарял\n" +
-                "Ее всечасно блеском алым")
-    }
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "И ветер бился и летал\n" +
-                "С ее летучим покрывалом?")
-    }
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "Прекрасно море в бурной мгле\n" +
-                "И небо в блесках без лазури;")
-    }
-    override fun onRestart() {
-        super.onRestart()
+
+    fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(fragment.tag)
+            .commit()
 
     }
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "Но верь мне: дева на скале\n" +
-                "Прекрасней волн, небес и бури.")
-    }
+
 }
